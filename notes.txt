@@ -1,0 +1,12 @@
+#) all the connection string is copied from mongo db , but the text before the ? is the db name , I put myself 
+or it will be called test
+MONGODB_URI=mongodb+srv://ayaahmed2001aa_db_user:bfi9IYuQro8iRwhl@cluster0.bdheb8d.mongodb.net/chatty_db?appName=Cluster0
+
+
+#) u have to go , add this in the network secrity tab in the ip address list
+0.0.0.0/0 --> this will allow all ip addresses
+
+#) Image kit compresses ur images , videos sent through the network
+as users usually have slow network , so it will compress the image before sending it to the user
+
+--> to use it , go to developer options , get the private key and add it in the env file

@@ -3,22 +3,20 @@ import express from "express";
 import { clerkMiddleware } from "@clerk/express";
 import "dotenv/config";
 
-
 import fs from "fs";
 import path from "path";
 
 import { connectDB } from "./lib/db.js";
+import job from "./lib/cron.js";
 
 const app = express();
 const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "public");
 
-
 app.use(express.json());
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(clerkMiddleware());
-
 
 // if the public directory exists, serve the static files
 // this is for the production build(deployment only)
@@ -37,4 +35,5 @@ app.get("/health", (req, res) => {
 app.listen(PORT, () => {
   connectDB();
   console.log(`Server is running on http://localhost:${PORT}`);
+  if (process.env.NODE_ENV === "production") job.start();
 });

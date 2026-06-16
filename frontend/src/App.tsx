@@ -6,8 +6,6 @@ function App() {
     <>
       <h1>test</h1>
       <header>
-        <SignInButton mode="modal" />
-        <SignUpButton mode="modal" />
         <Show when="signed-out">
           <SignInButton mode="modal" />
           <SignUpButton mode="modal" />

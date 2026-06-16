@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build":"rm -rf dist && cp -R src dist",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch src/index.js"
   },

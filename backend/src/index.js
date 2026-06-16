@@ -3,6 +3,7 @@ import express from "express";
 import { clerkMiddleware } from "@clerk/express";
 import "dotenv/config";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
+import authRoutes from "./routes/auth.route.js";
 import fs from "fs";
 import path from "path";
 
@@ -35,6 +36,9 @@ if (fs.existsSync(publicDir)) {
 app.get("/health", (req, res) => {
   res.status(200).json({ ok: true });
 });
+
+
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
   connectDB();

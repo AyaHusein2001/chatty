@@ -30,7 +30,7 @@ app.use(clerkMiddleware());
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
   //redirect any route that is not an API route to the index.html file in the public directory to allow the frontend to handle the routing(react router)
-  app.get("*", (req, res, next) => {
+  app.get("(.*)", (req, res, next) => {
     res.sendFile(path.join(publicDir, "index.html"), (err) => {
       if (err) next(err);
     });

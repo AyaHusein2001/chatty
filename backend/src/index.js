@@ -4,6 +4,7 @@ import { clerkMiddleware } from "@clerk/express";
 import "dotenv/config";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
+// import messageRoutes from "./routes/message.route.js";
 import fs from "fs";
 import path from "path";
 
@@ -39,6 +40,7 @@ app.get("/health", (req, res) => {
 
 
 app.use("/api/auth", authRoutes);
+// app.use("/api/messages", messageRoutes);
 
 app.listen(PORT, () => {
   connectDB();
